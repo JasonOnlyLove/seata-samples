@@ -22,10 +22,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @SpringBootApplication
 @EnableFeignClients
 @EnableEurekaClient
-public class OrderApplication {
+public class OrderEurekaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class, args);
+        SpringApplication.run(OrderEurekaApplication.class, args);
     }
 
     @Bean

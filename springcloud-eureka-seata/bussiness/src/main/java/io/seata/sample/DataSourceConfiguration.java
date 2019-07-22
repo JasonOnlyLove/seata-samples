@@ -7,15 +7,15 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * @author jimin.jm@alibaba-inc.com
  * @date 2019/06/14
  */
-@Configuration
+//@Configuration
 public class DataSourceConfiguration {
-    @Bean
+/*    @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
@@ -25,5 +25,5 @@ public class DataSourceConfiguration {
     @Bean("jdbcTemplate")
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
-    }
+    }*/
 }

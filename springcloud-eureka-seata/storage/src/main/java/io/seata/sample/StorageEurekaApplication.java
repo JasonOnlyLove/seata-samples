@@ -20,10 +20,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 @SpringBootApplication
 @EnableEurekaClient
-public class StorageApplication {
+public class StorageEurekaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StorageApplication.class, args);
+        SpringApplication.run(StorageEurekaApplication.class, args);
     }
 
     @Bean

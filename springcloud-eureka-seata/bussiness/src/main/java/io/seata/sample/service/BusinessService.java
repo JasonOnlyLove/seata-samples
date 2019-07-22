@@ -6,9 +6,10 @@ import javax.annotation.PostConstruct;
 
 import io.seata.sample.feign.OrderFeignClient;
 import io.seata.sample.feign.StorageFeignClient;
+import io.seata.sample.feign.UserFeignClient;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,7 +25,10 @@ public class BusinessService {
     private OrderFeignClient orderFeignClient;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private UserFeignClient userFeignClient;
+
+    //@Autowired
+    // private JdbcTemplate jdbcTemplate;
 
     /**
      * 减库存，下订单
@@ -39,21 +43,24 @@ public class BusinessService {
 
         orderFeignClient.create(userId, commodityCode, orderCount);
 
-        if (!validData()) {
-            throw new RuntimeException("账户或库存不足,执行回滚");
+        if (!userFeignClient.validAccountData("U100000")) {
+            throw new RuntimeException("账户不足,执行回滚");
+        }
+        if (!storageFeignClient.validStorageData("C100000")) {
+            throw new RuntimeException("账户不足,执行回滚");
         }
     }
 
-    @PostConstruct
+/*    @PostConstruct
     public void initData() {
         jdbcTemplate.update("delete from account_tbl");
         jdbcTemplate.update("delete from order_tbl");
         jdbcTemplate.update("delete from storage_tbl");
         jdbcTemplate.update("insert into account_tbl(user_id,money) values('U100000','10000') ");
         jdbcTemplate.update("insert into storage_tbl(commodity_code,count) values('C100000','200') ");
-    }
+    }*/
 
-    public boolean validData() {
+/*    public boolean validData() {
         Map accountMap = jdbcTemplate.queryForMap("select * from account_tbl where user_id='U100000'");
         if (Integer.parseInt(accountMap.get("money").toString()) < 0) {
             return false;
@@ -63,5 +70,5 @@ public class BusinessService {
             return false;
         }
         return true;
-    }
+    }*/
 }

@@ -20,4 +20,9 @@ public class AccountController {
         accountService.reduce(userId, money);
         return true;
     }
+
+    @RequestMapping(value = "/validAccountData", produces = "application/json")
+    public Boolean validStorageData(String userId) {
+        return accountService.validAccountData(userId);
+    }
 }

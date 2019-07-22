@@ -10,10 +10,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableFeignClients
-public class BusinessApplication {
+public class BusinessEurekaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BusinessApplication.class, args);
+        SpringApplication.run(BusinessEurekaApplication.class, args);
     }
 
 }
