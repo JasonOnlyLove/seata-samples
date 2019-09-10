@@ -43,10 +43,10 @@
         <nacos.version>0.2.1.RELEASE</nacos.version>
         <springboot.version>2.0.8.RELEASE</springboot.version>
         <nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
-        <dubbo-registry-nacos.version>0.0.2</dubbo-registry-nacos.version>
+        <dubbo-registry-nacos.version>2.7.1</dubbo-registry-nacos.version>
         <lombok.version>1.16.22</lombok.version>
         <spring.version>5.0.8.RELEASE</spring.version>
-        <dubbo.version>2.6.5</dubbo.version>
+        <dubbo.version>2.7.1</dubbo.version>
         <nacos-client.verison>1.0.0</nacos-client.verison>
     </properties>
 
@@ -109,7 +109,14 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba</groupId>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
@@ -121,7 +128,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba</groupId>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-nacos</artifactId>
                 <version>${dubbo-registry-nacos.version}</version>
             </dependency>
